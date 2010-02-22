@@ -10,10 +10,11 @@ class Comment
   timestamps!
   
   def poll
-    Poll.find(poll_id)
+    @poll ||= Poll.find(poll_id)
   end
   
   def poll=(poll)
+    @poll = nil
     self.poll_id = poll.id unless poll.blank?
   end
 end
